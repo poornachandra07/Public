@@ -1,1 +1,6 @@
 
+HTMLBody="<style>table, th, td { border: 1px solid black; border-collapse: collapse;}</style>"+
+"<table><tr><td>"+String.Join("</td><td>",TestDt.Columns.Cast(Of DataColumn).Select(Function (x) x.ColumnName).toArray)+"<td></tr>"+
+"<tr>"+String.Join("</tr><tr>",(From x In TestDt.AsEnumerable
+Let cells="<td>"+String.Join("</td><td>",x.ItemArray)+"</td>"
+Select cells).ToArray)+"</tr>"
