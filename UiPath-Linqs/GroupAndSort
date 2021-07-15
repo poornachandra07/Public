@@ -1,5 +1,0 @@
-(From d In TestDT.AsEnumerable
-Group d By k=d("ID").toString.Trim Into grp=Group
-Let c = grp.Sum(Function (r) CDbl(r("Amount").toString.Trim))
-Let ra = New Object(){k,grp.First()("Name"),grp.First()("Address"),c,grp.First()("Phone"),grp.Count}
-Select ResDT.Rows.Add(ra)).OrderByDescending(Function(m) CDbl(m("Amount"))).Take(10).CopyToDataTable
