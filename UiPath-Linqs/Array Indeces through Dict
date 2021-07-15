@@ -1,3 +1,0 @@
-//Get the indeces of Max integer in Array
-
-ArrayX.Select(Function(x, i) New With {Key.Index = i, Key.Value = x}).Where(Function(x) x.Value = Convert.ToInt32(ArrayX.Max)).Select(Function(x) x.Index).toList()
