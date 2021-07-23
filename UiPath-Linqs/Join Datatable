@@ -1,0 +1,2 @@
+(From a In dt1.AsEnumerable() Join b In dt2.AsEnumerable() On a(“ID”).ToString Equals b(“ID”).ToString 
+Select dt.LoadDataRow (New Object() { a.Field(Of String)(“ID”),a.Field(Of String)(“Name”),b.Field(Of String)(“Course”)},False)).CopyToDataTable
