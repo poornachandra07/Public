@@ -1,3 +1,0 @@
-(From x In TestDt.AsEnumerable
-Let count=x.ItemArray.Where(Function(y) String.IsNullOrEmpty(y.tostring.trim)).Count
-Select count).Sum(Function(r) r)
