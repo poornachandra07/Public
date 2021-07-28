@@ -1,2 +1,7 @@
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
 (From a In dt1.AsEnumerable() Join b In dt2.AsEnumerable() On a(“ID”).ToString Equals b(“ID”).ToString 
 Select dt.LoadDataRow (New Object() { a.Field(Of String)(“ID”),a.Field(Of String)(“Name”),b.Field(Of String)(“Course”)},False)).CopyToDataTable
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+(from a in dt1.AsEnumerable() join b in dt2.AsEnumerable() on a["StudentID"].ToString() equals b["StudentID"].ToString() 
+select dt.LoadDataRow (new object[] {a.Field<string>("StudentID"),a.Field<string>("StudentName"),b.Field<string>("Course")},false)).CopyToDataTable()
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
