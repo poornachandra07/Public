@@ -1,0 +1,3 @@
+(From d In TestDT.AsEnumerable
+Let ra=(New Object(){(testdt.Rows.IndexOf(d)+1).ToString}).Concat(d.ItemArray).ToArray
+Select ResDT.Rows.Add(ra)).CopyToDataTable
