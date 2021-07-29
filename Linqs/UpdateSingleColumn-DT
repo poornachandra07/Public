@@ -1,0 +1,1 @@
+TestDT.Select.ToList.ForEach(Sub(row) row("Column1") = row("Column1").ToString.Replace("X","Y"))
