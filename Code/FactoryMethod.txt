@@ -1,0 +1,118 @@
+///Dynamically creates respective news objective on demand.
+using System;
+abstract class News  
+    {  
+        public abstract string NewsCategory { get; }  
+        public abstract int Priority { get; set; }  
+        public abstract string HeadLine { get; set; }  
+    }
+class PoliticalNews : News
+    {  
+        private readonly string _newsCategory;  
+        private int _priority;  
+        private string _headline;  
+  
+        public PoliticalNews(int newsPriority, string HeadLine)  
+        {  
+            _newsCategory = "Political News";  
+            _priority = newsPriority;  
+            _headline = HeadLine;  
+        }  
+  
+        public override string NewsCategory  
+        {  
+            get { return _newsCategory; }  
+        }  
+  
+        public override int Priority  
+        {  
+            get { return _priority; }  
+            set { _priority = value; }  
+        }  
+  
+        public override string HeadLine  
+        {  
+            get { return _headline; }  
+            set { _headline = value; }  
+        }  
+    }
+class SportNews : News
+    {  
+        private readonly string _newsCategory;  
+        private int _priority;  
+        private string _headline;  
+  
+        public SportNews(int newsPriority, string HeadLine)  
+        {  
+            _newsCategory = "Sport News";  
+            _priority = newsPriority;  
+            _headline = HeadLine;  
+        }  
+  
+        public override string NewsCategory  
+        {  
+            get { return _newsCategory; }  
+        }  
+  
+        public override int Priority  
+        {  
+            get { return _priority; }  
+            set { _priority = value; }  
+        }  
+  
+        public override string HeadLine  
+        {  
+            get { return _headline; }  
+            set { _headline = value; }  
+        }  
+    }
+abstract class NewsFactory  
+    {  
+        public abstract News GetNews();  
+    }
+class PoliticalNewsFactory : NewsFactory  
+    {  
+        private int _priority;  
+        private string _headline;  
+  
+        public PoliticalNewsFactory(int priority, string headline)  
+        {  
+            _priority = priority;  
+            _headline = headline;  
+        }  
+  
+        public override News GetNews()  
+        {  
+            return new PoliticalNews(_priority, _headline);  
+        }  
+    }
+class SportNewsFactory : NewsFactory  
+    {  
+        private int _priority;  
+        private string _headline;  
+  
+        public SportNewsFactory(int priority, string headline)  
+        {  
+            _priority = priority;  
+            _headline = headline;  
+        }  
+  
+        public override News GetNews()  
+        {  
+            return new SportNews(_priority, _headline);  
+        }  
+    }
+
+public class Geeks {
+
+	// Main method
+	public static void Main(string[] args)
+	{
+		NewsFactory factory = null;
+		factory = new SportNewsFactory(1, "Bullish Stock market");
+		News news = factory.GetNews();  
+        Console.WriteLine("\nNews details are below : \n");  
+        Console.WriteLine("News Type: {0}\nNewsPriority: {1}\nHead Line: {2}",  
+          news.NewsCategory, news.Priority, news.HeadLine);
+		}
+}
