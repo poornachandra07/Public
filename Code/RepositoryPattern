@@ -1,0 +1,57 @@
+//Repository and aggregator for each entity
+using System;
+using System.Collections.Generic;
+ public class Book
+    {
+        public int BookID { get; set; }
+        public int Year { get; set; }
+	 	    public string Name { get; set; }
+        public string Author { get; set; }
+    }
+public interface IBookRepository
+    {
+        IEnumerable<Book> GetAll();
+        Book GetById(int BookID);
+        void Insert(Book book);
+        void Update(Book book);
+        void Delete(int BookID);
+        void Save();
+    }
+
+public class BookRepository : IBookRepository
+    {
+        private readonly BoookDBContext _context;
+        public BookRepository()
+        {
+            _context = new BookDBContext();
+        }
+        public BookRepository(BookDBContext context)
+        {
+            _context = context;
+        }
+        public IEnumerable<Book> GetAll()
+        {
+            return _context.Books.ToList();
+        }
+        public Book GetById(int BookID)
+        {
+            return _context.Books.Find(BookID);
+        }
+        public void Insert(Book book)
+        {
+            _context.Books.Add(book);
+        }
+        public void Update(Book book)
+        {
+            _context.Entry(books).State = EntityState.Modified;
+        }
+        public void Delete(int BookID)
+        {
+            Book book = _context.Books.Find(BookID);
+            _context.Books.Remove(book);
+        }
+        public void Save()
+        {
+            _context.SaveChanges();
+        }
+	}
