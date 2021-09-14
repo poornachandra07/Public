@@ -16,6 +16,7 @@ public class Singleton
         public void PrintLog(string message)
         {
             Console.WriteLine(message);
+            //Log file updation logics
         }
     }
 public class Program
