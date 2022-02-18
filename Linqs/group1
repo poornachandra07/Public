@@ -1,0 +1,5 @@
+(From d In TestDT.AsEnumerable
+Group d By k1=d(0).toString.Trim,k2=d(1).toString.Trim,k3=d(2).toString.Trim Into grp=Group
+Let upArr=TestDt.Columns.Cast(Of DataColumn).skip(3).Select(Function (col) String.Join(",", grp.Where(Function(x) Not(String.IsNullOrEmpty(x(col.ColumnName).tostring))).Select(Function (x) x(col.ColumnName)))).ToList
+Let ra = (New Object(){k1,k2,k3}).Concat(upArr).ToArray
+Select ResDT.Rows.Add(ra)).CopyToDataTable()
